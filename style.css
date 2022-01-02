@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* these are custom poperties in the root scope and make it easy to change the color in all the things below easily and in one place. They are eseentially variables  */
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* add a background color to the body
+ */
+body {
+  background-color: #f6f7fb;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* style the container */
+.container {
+  text-align: center;
+}
+
+/* and the progress container, which wraps around the numbers, and not the buttons. Space between to spread the numbers out, position relative so that you can make things inside it position absolute  */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+/* the progress conatiner before. This will be the greay empty line before the blue porgress line. When you use ::before you have to add content:''; or it won't show. See some extra notes in the .progress styling below. */
+.progress-container::before {
+  content:'';
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) ;
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+ }
+
+/* now work on the line, grey but blue as progress moves up. The transform moves the line to exactly in the middle vertically of the numbers. z index -1 as we want it behind the numbers and the circles. Transition to make the progress line smooth.
+ */
+.progress {
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) ;
+  height: 4px;
+  width: 0%;
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+/* now style the circles */
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty);
+  transition: 0.4s ease;
+} 
+
+/* now circle when active */
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+/* now go to top and look at custom properties starting with root scope, which creates variables of the colors to you can change quickly if you want to */
+
+/* Finally, style the buttons. White, no border, 6px radius, curser as a pointer, use same font family, add some padding and margin, adjust font size */
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* now style the button a little different when active. Make it a little smaller for a pushing in efferct */
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+/* style the disabled button ie. prev button when still at number 1 on the progress */
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}
+
+/* Finally go on to the JavaScript */
