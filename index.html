@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>My Progress Steps</title>
+  </head>
+  <body>
+    <!-- First create a container around everything -->
+    <div class="container">
+      <!-- and inside that a container called progress-container -->
+        <div class="progress-container">
+          <!-- and insde that a div called progress, with an id of progress. This is for styling the line, nothing will go inside it -->
+          <div class="progress" id='progress'></div>
+          <!-- creat the circles, with different classes for active and not active. Just one active for now -->
+          <div class="circle active">1</div>
+          <div class="circle">2</div>
+          <div class="circle">3</div>
+          <div class="circle">4</div>
+        </div>
+        <!-- now still in the main container but poutside the progress-container, add the buttons, the first one called prev and id of prev
+
+        also disabled for the first as can't go prev from the first step
+         -->
+         <button class="btn" id="prev" disabled>Prev</button>
+         <button class="btn" id="next">Next</button>
+
+         <!-- Second, jump into CSS to style what you have so far -->
+
+         
+        
+    </div>
+    
+    
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
